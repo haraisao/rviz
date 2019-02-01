@@ -30,6 +30,7 @@
 #define UNIFORM_STRING_STREAM_H
 
 #include <sstream>
+#include "exportdecl.h"
 
 namespace rviz
 {
@@ -42,7 +43,7 @@ namespace rviz
  * handles "C" style floats.  parseFloat() handles "C" and also
  * European-style floats which use the ",", like "1,2" parses to
  * 1.2f */
-class UniformStringStream: public std::stringstream
+class RVIZ_DECL UniformStringStream: public std::stringstream
 {
 public:
   UniformStringStream();

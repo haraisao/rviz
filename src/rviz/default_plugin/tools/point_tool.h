@@ -40,6 +40,8 @@
 # include <QObject>
 #endif
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace rviz
 {
 class StringProperty;

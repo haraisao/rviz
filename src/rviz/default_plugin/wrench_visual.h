@@ -2,6 +2,7 @@
 #define WRENCHSTAMPED_VISUAL_H
 
 #include <geometry_msgs/Wrench.h>
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace Ogre
 {

@@ -35,6 +35,7 @@
 #include <QCursor>
 
 #include "rviz/frame_position_tracking_view_controller.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {
@@ -58,11 +59,11 @@ class VectorProperty;
  * theta = #yaw_<br>
  * phi = #pitch_
  */
-class OrbitViewController: public FramePositionTrackingViewController
+class RVIZ_DEFAULT_PLUGIN_DECL OrbitViewController: public FramePositionTrackingViewController
 {
 Q_OBJECT
 public:
-  OrbitViewController();
+   OrbitViewController();
   virtual ~OrbitViewController();
 
   /** @brief Do subclass-specific initialization.  Called by
@@ -74,10 +75,10 @@ public:
    * \brief Move in/out from the focal point, ie. adjust #distance_ by amount
    * @param amount The distance to move.  Positive amount moves towards the focal point, negative moves away
    */
-  void zoom( float amount );
-  void yaw( float angle );
-  void pitch( float angle );
-  void move( float x, float y, float z );
+   void zoom( float amount );
+   void yaw( float angle );
+   void pitch( float angle );
+   void move( float x, float y, float z );
 
   virtual void handleMouseEvent(ViewportMouseEvent& evt);
 
@@ -100,12 +101,12 @@ protected:
    * \brief Calculates pitch and yaw values given a new position and the current focal point
    * @param position Position to calculate the pitch/yaw for
    */
-  void calculatePitchYawFromPosition( const Ogre::Vector3& position );
+   void calculatePitchYawFromPosition( const Ogre::Vector3& position );
 
   /**
    * \brief Calculates the focal shape size and update it's geometry
    */
-  void updateFocalShapeSize();
+   void updateFocalShapeSize();
 
   virtual void updateCamera();
 

@@ -36,6 +36,8 @@
 # include <ros/ros.h>
 #endif
 
+#include "exportdecl.h"
+
 class QTimer;
 
 namespace rviz
@@ -43,7 +45,7 @@ namespace rviz
 
 class VisualizationFrame;
 
-class VisualizerApp: public QObject
+class RVIZ_DECL VisualizerApp: public QObject
 {
 Q_OBJECT
 public:

@@ -54,7 +54,7 @@
 #include "rviz/load_resource.h"
 
 #include "selection_tool.h"
-
+#include <iostream>
 namespace rviz
 {
 
@@ -72,6 +72,7 @@ SelectionTool::SelectionTool()
 
 SelectionTool::~SelectionTool()
 {
+  std::cerr << "call ~selectionTool()" <<std::endl;
   delete move_tool_;
 }
 

@@ -36,7 +36,7 @@
 #include <OgreQuaternion.h>
 
 #include <sstream>
-
+#include <iostream>
 namespace rviz
 {
 

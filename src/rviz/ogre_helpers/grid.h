@@ -38,6 +38,8 @@
 #include <OgreMaterial.h>
 #include <OgreSharedPtr.h>
 
+#include "rviz/exportdecl.h"
+
 namespace Ogre
 {
 class SceneManager;
@@ -59,7 +61,7 @@ class BillboardLine;
  *
  * Displays a grid of cells, drawn with lines.  A grid with an identity orientation is drawn along the XZ plane.
  */
-class Grid
+class RVIZ_DECL Grid
 {
 public:
   enum Style

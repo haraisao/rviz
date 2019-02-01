@@ -42,6 +42,7 @@
 #endif
 
 #include <boost/shared_ptr.hpp>
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace Ogre
 {

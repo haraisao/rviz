@@ -36,6 +36,7 @@
 
 #include "rviz/tool.h"
 
+#include <iostream>
 namespace rviz
 {
 

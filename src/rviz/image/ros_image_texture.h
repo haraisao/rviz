@@ -43,6 +43,8 @@
 
 #include <stdexcept>
 
+#include "rviz/exportdecl.h"
+
 namespace rviz
 {
 
@@ -54,7 +56,7 @@ public:
   {}
 };
 
-class ROSImageTexture
+class RVIZ_DECL ROSImageTexture
 {
 public:
   ROSImageTexture();

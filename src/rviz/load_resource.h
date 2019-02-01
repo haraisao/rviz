@@ -33,6 +33,7 @@
 #include <QPixmap>
 #include <QCursor>
 #include <QString>
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
@@ -46,25 +47,25 @@ namespace rviz
  *        If fill_cache is set to true (default), the image will be
  *        stored in the cache after loading it from disk.
  */
-QPixmap loadPixmap( QString url, bool fill_cache=true );
+RVIZ_DECL QPixmap loadPixmap( QString url, bool fill_cache=true );
 
 /* @brief Load the default cursor: an arrow.
  *        The fill_cache parameter is ignored.
  */
-QCursor getDefaultCursor( bool fill_cache=true );
+RVIZ_DECL QCursor getDefaultCursor( bool fill_cache=true );
 
 /* @brief Create a cursor using a shape in a file/url.
  *        In case of a failure, the result will be the default arrow cursor.
  *        If fill_cache is set to true (default), the image will be
  *        stored in the cache after loading it from disk.
  */
-QCursor makeIconCursor( QString icon_url, bool fill_cache=true );
+RVIZ_DECL QCursor makeIconCursor( QString icon_url, bool fill_cache=true );
 
 /* @brief Create a cursor using the shape in the icon QPixmap.
  *        If fill_cache is set to true (default), the image will be
  *        stored in the cache using \e cache_key.
  */
-QCursor makeIconCursor( QPixmap icon, QString cache_key="", bool fill_cache=true );
+RVIZ_DECL QCursor makeIconCursor( QPixmap icon, QString cache_key="", bool fill_cache=true );
 
 
 }

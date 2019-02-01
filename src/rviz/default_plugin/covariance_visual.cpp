@@ -100,7 +100,7 @@ void computeShapeScaleAndOrientation3D(const Eigen::Matrix3d& covariance, Ogre::
   }
   else
   {
-    ROS_WARN_THROTTLE(1, "failed to compute eigen vectors/values for position. Is the covariance matrix correct?");
+   // ROS_WARN_THROTTLE(1, "failed to compute eigen vectors/values for position. Is the covariance matrix correct?");
     eigenvalues = Eigen::Vector3d::Zero();      // Setting the scale to zero will hide it on the screen
     eigenvectors = Eigen::Matrix3d::Identity();
   }
@@ -141,7 +141,7 @@ void computeShapeScaleAndOrientation2D(const Eigen::Matrix2d& covariance, Ogre::
   }
   else
   {
-    ROS_WARN_THROTTLE(1, "failed to compute eigen vectors/values for position. Is the covariance matrix correct?");
+   // ROS_WARN_THROTTLE(1, "failed to compute eigen vectors/values for position. Is the covariance matrix correct?");
     eigenvalues = Eigen::Vector2d::Zero();      // Setting the scale to zero will hide it on the screen
     eigenvectors = Eigen::Matrix2d::Identity();
   }
@@ -340,10 +340,12 @@ void CovarianceVisual::updatePosition( const Eigen::Matrix6d& covariance )
   }
   // Rotate and scale the position scene node
   position_node_->setOrientation(shape_orientation);
-  if(!shape_scale.isNaN())
-      position_node_->setScale(shape_scale);
+  if (!shape_scale.isNaN())
+	  position_node_->setScale(shape_scale);
+#if 1
   else
-      ROS_WARN_STREAM("position shape_scale contains NaN: " << shape_scale);
+	  ROS_WARN_STREAM("position shape_scale contains NaN: " << shape_scale);
+#endif
 }
 
 void CovarianceVisual::updateOrientation( const Eigen::Matrix6d& covariance, ShapeIndex index )
@@ -409,8 +411,10 @@ void CovarianceVisual::updateOrientation( const Eigen::Matrix6d& covariance, Sha
   orientation_shape_[index]->setOrientation(shape_orientation);
   if(!shape_scale.isNaN())
       orientation_shape_[index]->setScale(shape_scale);
+#if 1
   else
       ROS_WARN_STREAM("orientation shape_scale contains NaN: " << shape_scale);
+#endif
 }
 
 void CovarianceVisual::setScales( float pos_scale, float ori_scale)

@@ -49,6 +49,8 @@
 # include "rviz/render_panel.h"
 #endif
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace Ogre
 {
 class SceneNode;

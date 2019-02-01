@@ -505,16 +505,12 @@ void VisualizationManager::emitStatusUpdate( const QString& message )
 void VisualizationManager::load( const Config& config )
 {
   stopUpdate();
-
   emitStatusUpdate( "Creating displays" );
   root_display_group_->load( config );
-
   emitStatusUpdate( "Creating tools" );
   tool_manager_->load( config.mapGetChild( "Tools" ));
-
   emitStatusUpdate( "Creating views" );
   view_manager_->load( config.mapGetChild( "Views" ));
-
   startUpdate();
 }
 

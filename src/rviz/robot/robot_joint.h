@@ -48,6 +48,8 @@
 #include "rviz/ogre_helpers/object.h"
 #include "rviz/selection/forwards.h"
 
+#include "rviz/exportdecl.h"
+
 namespace Ogre
 {
 class SceneManager;
@@ -81,7 +83,7 @@ class StringProperty;
  * \struct RobotJoint
  * \brief Contains any data we need from a joint in the robot.
  */
-class RobotJoint: public QObject
+class RVIZ_DECL RobotJoint: public QObject
 {
 Q_OBJECT
 public:

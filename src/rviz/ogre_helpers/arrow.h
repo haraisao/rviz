@@ -28,6 +28,7 @@
  */
 
 #include "object.h"
+#include "rviz/exportdecl.h"
 
 #ifndef OGRE_TOOLS_ARROW_H
 #define OGRE_TOOLS_ARROW_H
@@ -56,7 +57,7 @@ class Shape;
  * different direction, call setOrientation() with a rotation from -Z
  * to the desired vector.
  */
-class Arrow : public Object
+class RVIZ_DECL Arrow : public Object
 {
 public:
   /**

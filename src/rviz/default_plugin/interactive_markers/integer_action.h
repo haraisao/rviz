@@ -30,6 +30,7 @@
 #define INTEGER_ACTION_H
 
 #include <QAction>
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {

@@ -47,6 +47,7 @@
 #include "rviz/display.h"
 #include "rviz/properties/bool_property.h"
 #include "rviz/selection/forwards.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {

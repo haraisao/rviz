@@ -44,6 +44,7 @@
 #include <OgreSceneNode.h>
 
 #include <sstream>
+#include <iostream>
 
 namespace rviz
 {
@@ -56,6 +57,7 @@ MeasureTool::MeasureTool() :
 
 MeasureTool::~MeasureTool()
 {
+  std::cerr << "Call ~MeasureTool()" << std::endl;
   delete line_;
 }
 
@@ -64,7 +66,7 @@ void MeasureTool::onInitialize()
   line_ = new Line(context_->getSceneManager());
 
   std_cursor_ = getDefaultCursor();
-  hit_cursor_ = makeIconCursor( "package://rviz/icons/crosshair.svg" );
+  hit_cursor_ = makeIconCursor( "package://rviz/icons/crosshair.png" );
 }
 
 void MeasureTool::activate()

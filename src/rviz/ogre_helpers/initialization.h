@@ -33,13 +33,14 @@
 #include <stddef.h>
 #include <string>
 #include <vector>
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
 
 typedef std::vector<std::string> V_string;
-void cleanupOgre();
-void initializeResources( const V_string& resource_paths );
+RVIZ_DECL void cleanupOgre();
+RVIZ_DECL void initializeResources( const V_string& resource_paths );
 
 } // namespace rviz
 

@@ -2,6 +2,7 @@
 #define POINT_VISUAL_H
 
 #include <geometry_msgs/PointStamped.h>
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace Ogre
 {

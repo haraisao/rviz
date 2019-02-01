@@ -41,6 +41,8 @@
 #include <vector>
 #include <map>
 
+#include "exportdecl.h"
+
 namespace Ogre
 {
 class Root;
@@ -72,7 +74,7 @@ class ViewController;
  * the DisplayContext (which further forwards them to the active
  * Tool, etc.)
  */
-class RenderPanel: public QtOgreRenderWindow, public Ogre::SceneManager::Listener
+class RVIZ_DECL RenderPanel: public QtOgreRenderWindow, public Ogre::SceneManager::Listener
 {
 Q_OBJECT
 public:

@@ -278,12 +278,12 @@ bool VisualizerApp::init( int argc, char** argv )
     {
       frame_->setSplashPath( QString::fromStdString( splash_path ));
     }
+
     frame_->initialize( QString::fromStdString( display_config ));
     if( !fixed_frame.empty() )
     {
       frame_->getManager()->setFixedFrame( QString::fromStdString( fixed_frame ));
     }
-
     frame_->getManager()->getSelectionManager()->setDebugMode( verbose );
 
     frame_->show();

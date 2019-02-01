@@ -86,7 +86,15 @@ BillboardLine::~BillboardLine()
 
   scene_manager_->destroySceneNode( scene_node_->getName() );
 
+#ifdef WIN32
+  Ogre::ResourcePtr mat_ptr = Ogre::MaterialManager::getSingleton().getByName(material_->getName());
+  if (!mat_ptr.isNull()) {
+    //std::cerr << "call MaterialManager.remove " << material_->getName() << std::endl;
+    Ogre::MaterialManager::getSingleton().remove(mat_ptr);
+  }
+#else
   Ogre::MaterialManager::getSingleton().remove(material_->getName());
+#endif
 }
 
 Ogre::BillboardChain* BillboardLine::createChain()

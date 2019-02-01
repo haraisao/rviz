@@ -41,6 +41,8 @@
 #include <QIcon>
 #include <QSet>
 
+#include "exportdecl.h"
+
 class QDockWidget;
 class QWidget;
 
@@ -60,7 +62,7 @@ class StatusList;
 class DisplayContext;
 class PanelDockWidget;
 
-class Display: public BoolProperty
+class RVIZ_DECL Display: public BoolProperty
 {
 Q_OBJECT
 public:

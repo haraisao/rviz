@@ -32,6 +32,7 @@
 #include <ostream>
 
 #include "rviz/config.h"
+#include "rviz/exportdecl.h"
 
 namespace YAML
 {
@@ -41,7 +42,7 @@ class Emitter;
 namespace rviz
 {
 
-class YamlConfigWriter
+class RVIZ_DECL YamlConfigWriter
 {
 public:
   /** @brief Constructor.  Writer starts in a non-error state. */

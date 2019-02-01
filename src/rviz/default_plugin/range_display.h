@@ -33,6 +33,7 @@
 #include <sensor_msgs/Range.h>
 
 #include "rviz/message_filter_display.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {

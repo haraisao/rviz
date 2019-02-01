@@ -49,6 +49,7 @@ boost::filesystem::path getPath( QString url )
     QString file_name = url.section('/',3);
     path = ros::package::getPath(package_name.toStdString());
     path = path / file_name.toStdString();
+    path = boost::filesystem::path(path.generic_string());
   }
   else if ( url.indexOf("file://", 0, Qt::CaseInsensitive) == 0 )
   {
@@ -80,10 +81,13 @@ QPixmap loadPixmap( QString url, bool fill_cache )
   if ( boost::filesystem::exists( path ) )
   {
     ROS_DEBUG_NAMED( "load_resource", "Loading '%s'", path.string().c_str() );
-    if ( !pixmap.load( QString::fromStdString( path.string() ) ) )
+	//std::cerr << "Load:" << path.make_preferred().string() << std::endl;
+    if ( !pixmap.load( QString::fromStdString( path.make_preferred().string() ) ) )
     {
-      ROS_ERROR( "Could not load pixmap '%s'", path.string().c_str() );
+      ROS_ERROR( "== Could not load pixmap '%s'", path.string().c_str() );
     }
+  }else{
+      ROS_ERROR( "....File not Found: load pixmap '%s'", path.string().c_str() );
   }
 
   if ( fill_cache )
@@ -120,7 +124,7 @@ QCursor makeIconCursor( QPixmap icon, QString cache_key, bool fill_cache )
     return QCursor( cursor_img, 0, 0 );
   }
 
-  QPixmap base_cursor = loadPixmap( "package://rviz/icons/cursor.svg", fill_cache );
+  QPixmap base_cursor = loadPixmap( "package://rviz/icons/cursor.png", fill_cache );
 
   const int cursor_size = 32;
 

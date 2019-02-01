@@ -32,6 +32,7 @@
 #include <istream>
 
 #include "rviz/config.h"
+#include "rviz/exportdecl.h"
 
 namespace YAML
 {
@@ -41,7 +42,7 @@ class Node;
 namespace rviz
 {
 
-class YamlConfigReader
+class RVIZ_DECL YamlConfigReader
 {
 public:
   /** @brief Constructor.  Object begins in a no-error state. */

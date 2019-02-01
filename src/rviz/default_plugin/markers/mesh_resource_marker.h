@@ -31,6 +31,7 @@
 #define RVIZ_MESH_RESOURCE_MARKER_H
 
 #include "marker_base.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 #include <OgreMaterial.h>
 

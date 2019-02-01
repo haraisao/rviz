@@ -30,6 +30,7 @@
 #define RVIZ_MARKER_ARRAY_DISPLAY_H
 
 #include "marker_display.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {

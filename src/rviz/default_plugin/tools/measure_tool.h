@@ -39,6 +39,7 @@
 #include "rviz/tool.h"
 
 #include <OgreVector3.h>
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {

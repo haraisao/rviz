@@ -60,6 +60,8 @@
 #include <tf2_ros/message_filter.h>
 #endif
 
+#include "exportdecl.h"
+
 namespace tf
 {
 class TransformListener;
@@ -78,7 +80,7 @@ class Display;
  *
  * During one frame update (nominally 33ms), the tf tree stays consistent and queries are cached for speedup.
  */
-class FrameManager: public QObject
+class RVIZ_DECL FrameManager: public QObject
 {
 Q_OBJECT
 public:

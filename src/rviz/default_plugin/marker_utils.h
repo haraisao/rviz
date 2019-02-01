@@ -30,6 +30,8 @@
 #ifndef RVIZ_MARKER_UTILS_H
 #define RVIZ_MARKER_UTILS_H
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace Ogre
 {
 class SceneNode;

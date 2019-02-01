@@ -48,6 +48,8 @@
 
 #include "rviz/default_plugin/interactive_markers/interactive_marker.h"
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace rviz
 {
 class BoolProperty;

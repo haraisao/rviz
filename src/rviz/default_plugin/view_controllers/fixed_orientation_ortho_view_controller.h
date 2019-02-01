@@ -33,6 +33,7 @@
 #include "rviz/frame_position_tracking_view_controller.h"
 
 #include <OgreQuaternion.h>
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {

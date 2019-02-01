@@ -83,7 +83,6 @@ ViewController* ViewManager::create( const QString& class_id )
     view = new FailedViewController( class_id, error );
   }
   view->initialize( context_ );
-
   return view;
 }
 

@@ -32,11 +32,12 @@
 #include <OgreQuaternion.h>
 
 #include "rviz/properties/property.h"
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
 
-class QuaternionProperty: public Property
+class RVIZ_DECL QuaternionProperty: public Property
 {
 Q_OBJECT
 public:

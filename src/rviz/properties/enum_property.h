@@ -32,6 +32,7 @@
 #include <QStringList>
 
 #include "rviz/properties/string_property.h"
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
@@ -44,7 +45,7 @@ namespace rviz
  * option.  The integer returned will be that passed to addOption()
  * for with the string that is currently selected.
  */
-class EnumProperty: public StringProperty
+class RVIZ_DECL EnumProperty: public StringProperty
 {
 Q_OBJECT
 public:

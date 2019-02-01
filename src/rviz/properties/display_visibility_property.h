@@ -39,6 +39,7 @@
 #include <QString>
 
 #include "bool_property.h"
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
@@ -53,7 +54,7 @@ class DisplayVisibilityProperty;
 /*
  * @brief Changes one visibility bit of a given Display
  */
-class DisplayVisibilityProperty : public BoolProperty
+class RVIZ_DECL DisplayVisibilityProperty : public BoolProperty
 {
 Q_OBJECT
 public:

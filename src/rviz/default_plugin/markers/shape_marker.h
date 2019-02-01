@@ -31,6 +31,7 @@
 #define RVIZ_SHAPE_MARKER_H
 
 #include "marker_base.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {

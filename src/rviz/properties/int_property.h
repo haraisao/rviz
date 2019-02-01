@@ -30,12 +30,13 @@
 #define INT_PROPERTY_H
 
 #include "rviz/properties/property.h"
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
 
 /** @brief Property specialized to provide max/min enforcement for integers. */
-class IntProperty: public Property
+class RVIZ_DECL IntProperty: public Property
 {
 Q_OBJECT
 public:

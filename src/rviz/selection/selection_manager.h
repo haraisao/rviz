@@ -53,6 +53,8 @@
 #include <vector>
 #include <set>
 
+#include "rviz/exportdecl.h"
+
 namespace ros
 {
 class Publisher;
@@ -77,7 +79,7 @@ class PropertyTreeModel;
 class ViewportMouseEvent;
 class VisualizationManager;
 
-class SelectionManager: public QObject, public Ogre::MaterialManager::Listener, public Ogre::RenderQueueListener
+class RVIZ_DECL SelectionManager: public QObject, public Ogre::MaterialManager::Listener, public Ogre::RenderQueueListener
 {
 Q_OBJECT
 public:

@@ -37,6 +37,8 @@
 #include <rviz/ogre_helpers/arrow.h>
 #include <rviz/ogre_helpers/axes.h>
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace Ogre
 {
 class ManualObject;

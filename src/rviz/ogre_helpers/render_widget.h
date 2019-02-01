@@ -31,6 +31,7 @@
 
 #include <QWidget>
 #include <QFrame>
+#include "../exportdecl.h"
 
 namespace Ogre
 {
@@ -42,7 +43,7 @@ namespace rviz
 
 class RenderSystem;
 
-class RenderWidget: public QWidget
+class RVIZ_DECL RenderWidget: public QWidget
 {
 public:
   RenderWidget( RenderSystem* render_system, QWidget *parent = 0 );

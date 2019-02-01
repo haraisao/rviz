@@ -38,6 +38,8 @@
 #include "rviz/message_filter_display.h"
 #include "rviz/selection/forwards.h"
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace rviz
 {
 class Arrow;

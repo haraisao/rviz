@@ -32,12 +32,13 @@
 #include <string>
 
 #include "rviz/properties/property.h"
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
 
 /** @brief Property specialized for string values. */
-class StringProperty: public Property
+class RVIZ_DECL StringProperty: public Property
 {
 Q_OBJECT
 public:

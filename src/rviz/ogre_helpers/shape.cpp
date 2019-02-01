@@ -40,6 +40,7 @@
 #include <OgreTechnique.h>
 #include <stdint.h>
 
+#include <iostream>
 namespace rviz
 {
 
@@ -70,8 +71,11 @@ Ogre::Entity* Shape::createEntity(const std::string& name, Type type, Ogre::Scen
   default:
     ROS_BREAK();
   }
-
+#ifdef WIN32
+  return scene_manager->createEntity(name, mesh_name, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
+#else
   return scene_manager->createEntity(name, mesh_name);
+#endif
 }
 
 Shape::Shape( Type type, Ogre::SceneManager* scene_manager, Ogre::SceneNode* parent_node )
@@ -81,14 +85,11 @@ Shape::Shape( Type type, Ogre::SceneManager* scene_manager, Ogre::SceneNode* par
   static uint32_t count = 0;
   std::stringstream ss;
   ss << "Shape" << count++;
-
   entity_ = createEntity(ss.str(), type, scene_manager);
-
   if ( !parent_node )
   {
     parent_node = scene_manager_->getRootSceneNode();
   }
-
   scene_node_ = parent_node->createChildSceneNode();
   offset_node_ = scene_node_->createChildSceneNode();
   if (entity_)
@@ -103,7 +104,6 @@ Shape::Shape( Type type, Ogre::SceneManager* scene_manager, Ogre::SceneNode* par
 
   if (entity_)
     entity_->setMaterialName(material_name_);
-
 #if (OGRE_VERSION_MAJOR <= 1 && OGRE_VERSION_MINOR <= 4)
   if (entity_)
     entity_->setNormaliseNormals(true);
@@ -112,14 +112,17 @@ Shape::Shape( Type type, Ogre::SceneManager* scene_manager, Ogre::SceneNode* par
 
 Shape::~Shape()
 {
-  scene_manager_->destroySceneNode( scene_node_->getName() );
-  scene_manager_->destroySceneNode( offset_node_->getName() );
+	scene_manager_->destroySceneNode(scene_node_->getName());
+	scene_manager_->destroySceneNode(offset_node_->getName());
+	if (entity_)
+		scene_manager_->destroyEntity(entity_);
+	material_->unload();
 
-  if (entity_)
-    scene_manager_->destroyEntity( entity_ );
-
-  material_->unload();
-  Ogre::MaterialManager::getSingleton().remove(material_->getName());
+	Ogre::ResourcePtr mat_ptr = Ogre::MaterialManager::getSingleton().getByName(material_->getName());
+	if (!mat_ptr.isNull()) {
+    //std::cerr << "call MaterialManager.remove " << material_->getName() << std::endl;
+		Ogre::MaterialManager::getSingleton().remove(mat_ptr);
+	}
 }
 
 void Shape::setColor(const Ogre::ColourValue& c)

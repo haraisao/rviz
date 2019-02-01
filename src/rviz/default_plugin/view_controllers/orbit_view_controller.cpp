@@ -49,6 +49,8 @@
 
 #include "rviz/default_plugin/view_controllers/orbit_view_controller.h"
 
+#include <iostream>
+
 static const float PITCH_START = Ogre::Math::HALF_PI / 2.0;
 static const float YAW_START = Ogre::Math::HALF_PI * 0.5;
 static const float DISTANCE_START = 10;
@@ -83,7 +85,6 @@ void OrbitViewController::onInitialize()
   FramePositionTrackingViewController::onInitialize();
 
   camera_->setProjectionType( Ogre::PT_PERSPECTIVE );
-
   focal_shape_ = new Shape(Shape::Sphere, context_->getSceneManager(), target_scene_node_);
   updateFocalShapeSize();
   focal_shape_->setColor(1.0f, 1.0f, 0.0f, 0.5f);

@@ -60,6 +60,7 @@
 #include <vector>
 
 #include <boost/shared_ptr.hpp>
+#include "rviz/exportdecl.h"
 
 namespace Ogre
 {
@@ -76,7 +77,7 @@ namespace rviz
 {
 
 class PointCloud;
-class PointCloudRenderable : public Ogre::SimpleRenderable
+class RVIZ_DECL PointCloudRenderable : public Ogre::SimpleRenderable
 {
 public:
   PointCloudRenderable(PointCloud* parent, int num_points, bool use_tex_coords);
@@ -119,7 +120,7 @@ typedef std::vector<PointCloudRenderablePtr> V_PointCloudRenderable;
  * Most of the functions in PointCloud are not safe to call from any thread but the render thread.  Exceptions are clear() and addPoints(), which
  * are safe as long as we are not in the middle of a render (ie. Ogre::Root::renderOneFrame, or Ogre::RenderWindow::update)
  */
-class PointCloud : public Ogre::MovableObject
+class RVIZ_DECL PointCloud : public Ogre::MovableObject
 {
 public:
   enum RenderMode

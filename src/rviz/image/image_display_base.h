@@ -48,6 +48,8 @@
 # include "rviz/display.h"
 #endif
 
+#include "rviz/exportdecl.h"
+
 namespace rviz
 {
 /** @brief Display subclass for subscribing and displaying to image messages.
@@ -57,7 +59,7 @@ namespace rviz
  * it handles subscribing and unsubscribing when the display is
  * enabled or disabled.  */
 
-class ImageDisplayBase : public Display
+class RVIZ_DECL ImageDisplayBase : public Display
 {
 Q_OBJECT
 public:

@@ -31,10 +31,11 @@
 #define RVIZ_MESH_LOADER_H
 
 #include <OgreMesh.h>
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
-  Ogre::MeshPtr loadMeshFromResource(const std::string& resource_path);
+  RVIZ_DECL Ogre::MeshPtr loadMeshFromResource(const std::string& resource_path);
 
 } // namespace rviz
 

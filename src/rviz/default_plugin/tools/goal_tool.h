@@ -38,6 +38,8 @@
 # include "rviz/default_plugin/tools/pose_tool.h"
 #endif
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace rviz
 {
 class Arrow;

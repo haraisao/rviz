@@ -38,6 +38,8 @@
 
 #include "rviz/tool.h"
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace rviz
 {
 class Arrow;

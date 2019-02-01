@@ -58,7 +58,7 @@ FocusTool::~FocusTool()
 void FocusTool::onInitialize()
 {
   std_cursor_ = getDefaultCursor();
-  hit_cursor_ = makeIconCursor( "package://rviz/icons/crosshair.svg" );
+  hit_cursor_ = makeIconCursor( "package://rviz/icons/crosshair.png" );
 }
 
 void FocusTool::activate()

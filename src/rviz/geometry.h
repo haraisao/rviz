@@ -30,6 +30,8 @@
 #ifndef GEOMETRY_H
 #define GEOMETRY_H
 
+#include "rviz/exportdecl.h"
+
 namespace Ogre
 {
 class Plane;
@@ -43,19 +45,19 @@ namespace rviz
 /** @brief Given a viewport and an x,y position in window-pixel coordinates,
  *  find the point on a plane directly behind it, if any.
  * @return true if the intersection exists, false if it does not. */
-bool getPointOnPlaneFromWindowXY( Ogre::Viewport* viewport,
+RVIZ_DECL bool getPointOnPlaneFromWindowXY( Ogre::Viewport* viewport,
                                   Ogre::Plane& plane,
                                   int window_x, int window_y,
                                   Ogre::Vector3& intersection_out );
 
 
 /** @brief Return the input angle mapped back to the range 0 to 2*PI. */
-float mapAngleTo0_2Pi( float angle );
+RVIZ_DECL float mapAngleTo0_2Pi( float angle );
 
 /** @brief Given a viewport and a 3D position in world coordinates,
  *  project that point into the view plane.
  * @return The 2D floating-point pixel position of the projection. */
-Ogre::Vector2 project3DPointToViewportXY(const Ogre::Viewport* view, const Ogre::Vector3& pos);
+RVIZ_DECL Ogre::Vector2 project3DPointToViewportXY(const Ogre::Viewport* view, const Ogre::Vector3& pos);
 
 } // end namespace rviz
 

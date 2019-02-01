@@ -31,6 +31,7 @@
 #define RVIZ_ROBOT_MODEL_DISPLAY_H
 
 #include "rviz/display.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 #include <OgreVector3.h>
 

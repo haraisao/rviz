@@ -32,6 +32,7 @@
 
 #include "rviz/tool.h"
 #include "rviz/selection/forwards.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 #include <vector>
 

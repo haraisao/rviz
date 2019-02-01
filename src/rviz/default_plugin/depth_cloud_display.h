@@ -53,6 +53,11 @@
 # include <rviz/default_plugin/point_cloud_common.h>
 #endif
 
+#include "rviz/default_plugin/exportdecl.h"
+
+#ifdef WIN32
+#include <cstdint>
+#endif
 #include <QMap>
 
 using namespace message_filters::sync_policies;
@@ -204,9 +209,11 @@ protected:
   EnumProperty* color_transport_property_;
   BoolProperty* use_occlusion_compensation_property_;
   FloatProperty* occlusion_shadow_timeout_property_;
-
+#ifdef WIN32
+  uint32_t queue_size_;
+#else
   u_int32_t queue_size_;
-
+#endif
   MultiLayerDepth* ml_depth_data_;
 
   Ogre::Quaternion current_orientation_;

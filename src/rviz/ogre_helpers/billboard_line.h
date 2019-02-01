@@ -39,6 +39,7 @@
 #include <OgreColourValue.h>
 #include <OgreMaterial.h>
 #include <OgreSharedPtr.h>
+#include "rviz/exportdecl.h"
 
 namespace Ogre
 {
@@ -56,7 +57,7 @@ namespace rviz
  * \class BillboardLine
  * \brief An object that displays a multi-segment line strip rendered as billboards
  */
-class BillboardLine : public Object
+class RVIZ_DECL BillboardLine : public Object
 {
 public:
   /**

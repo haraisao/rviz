@@ -34,11 +34,12 @@
 #include "rviz/properties/parse_color.h"
 
 #include "rviz/properties/property.h"
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
 
-class ColorProperty: public Property
+class RVIZ_DECL ColorProperty: public Property
 {
 Q_OBJECT
 public:

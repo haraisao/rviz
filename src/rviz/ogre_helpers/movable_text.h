@@ -47,7 +47,7 @@
 #include <OgreVector3.h>
 #include <OgreQuaternion.h>
 #include <OgreSharedPtr.h>
-
+#include "rviz/exportdecl.h"
 
 namespace Ogre
 {
@@ -59,7 +59,7 @@ class Font;
 namespace rviz
 {
 
-class MovableText : public Ogre::MovableObject, public Ogre::Renderable
+class RVIZ_DECL MovableText : public Ogre::MovableObject, public Ogre::Renderable
 {
   /******************************** MovableText data ****************************/
 public:

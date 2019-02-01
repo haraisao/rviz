@@ -41,6 +41,8 @@
 
 #include <urdf/model.h> // can be replaced later by urdf_model/types.h
 
+#include "rviz/exportdecl.h"
+
 namespace Ogre
 {
 class SceneManager;
@@ -81,7 +83,7 @@ class DisplayContext;
  * A helper class to draw a representation of a robot, as specified by a URDF.  Can display either the visual models of the robot,
  * or the collision models.
  */
-class Robot : public QObject
+class RVIZ_DECL Robot : public QObject
 {
 Q_OBJECT
 public:

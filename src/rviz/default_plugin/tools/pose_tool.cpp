@@ -40,6 +40,7 @@
 
 #include "rviz/default_plugin/tools/pose_tool.h"
 
+#include <iostream>
 namespace rviz
 {
 
@@ -51,6 +52,7 @@ PoseTool::PoseTool()
 
 PoseTool::~PoseTool()
 {
+  std::cerr << "   call ~PoseTool()" << std::endl;
   delete arrow_;
 }
 

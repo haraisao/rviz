@@ -35,6 +35,7 @@
 #include <OgreColourValue.h>
 
 #include "rviz/properties/bool_property.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace Ogre
 {

@@ -111,6 +111,7 @@ void MultiLayerDepth::initializeConversion(const sensor_msgs::ImageConstPtr& dep
   if ( expected_width != depth_msg->width ||
        expected_height != depth_msg->height )
   {
+
     std::ostringstream s;
     s << "Depth image size and camera info don't match: ";
     s << depth_msg->width << " x " << depth_msg->height;
@@ -472,10 +473,14 @@ sensor_msgs::PointCloud2Ptr MultiLayerDepth::generatePointCloudFromDepth(sensor_
   {
     if (depth_msg->width != color_msg->width || depth_msg->height != color_msg->height)
     {
+#if 0
+       throw( MultiLayerDepthException ( "Depth image resolution does not match color image resolution" ) );
+#else
       std::stringstream error_msg;
       error_msg << "Depth image resolution (" << (int)depth_msg->width << "x" << (int)depth_msg->height << ") "
           "does not match color image resolution (" << (int)color_msg->width << "x" << (int)color_msg->height << ")";
       throw( MultiLayerDepthException ( error_msg.str() ) );
+#endif
     }
 
     // convert color coding to 8-bit rgb data

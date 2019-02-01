@@ -36,6 +36,8 @@
 #include <OgreColourValue.h>
 #include <OgreRenderTargetListener.h>
 
+#include "rviz/exportdecl.h"
+
 namespace Ogre
 {
 class Root;
@@ -52,7 +54,7 @@ namespace rviz
  *  the guts replaced by new RenderSystem and RenderWidget classes
  *  inspired by the initialization sequence of Gazebo's renderer.
  */
-class QtOgreRenderWindow : public RenderWidget, public Ogre::RenderTargetListener {
+class RVIZ_DECL QtOgreRenderWindow : public RenderWidget, public Ogre::RenderTargetListener {
 public:
   /** Constructor.
   	@param parent The parent wxWindow component.

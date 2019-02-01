@@ -7,6 +7,7 @@
 
 #include <geometry_msgs/WrenchStamped.h>
 #include <rviz/message_filter_display.h>
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace Ogre
 {

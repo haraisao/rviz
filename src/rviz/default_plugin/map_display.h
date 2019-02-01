@@ -47,6 +47,8 @@
 
 #include "rviz/display.h"
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace Ogre
 {
 class ManualObject;

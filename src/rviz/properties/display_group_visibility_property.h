@@ -40,6 +40,8 @@
 #include <QObject>
 #include <QString>
 
+#include "rviz/exportdecl.h"
+
 namespace rviz
 {
 
@@ -55,7 +57,7 @@ class DisplayVisibilityProperty;
  * Manages the visibility of all displays in a display group
  * by switching one bit in Ogre's visibility mask.
  */
-class DisplayGroupVisibilityProperty: public DisplayVisibilityProperty
+class RVIZ_DECL DisplayGroupVisibilityProperty: public DisplayVisibilityProperty
 {
   Q_OBJECT
 public:

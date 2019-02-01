@@ -42,6 +42,8 @@
 #include <vector>
 #include <exception>
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace rviz
 {
 

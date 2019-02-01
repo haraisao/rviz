@@ -31,6 +31,7 @@
 #define RVIZ_AXES_DISPLAY_H
 
 #include "rviz/display.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {
@@ -40,7 +41,7 @@ class FloatProperty;
 class TfFrameProperty;
 
 /** @brief Displays a set of XYZ axes at the origin of a chosen frame. */
-class AxesDisplay: public Display
+class RVIZ_DEFAULT_PLUGIN_DECL AxesDisplay: public Display
 {
 Q_OBJECT
 public:

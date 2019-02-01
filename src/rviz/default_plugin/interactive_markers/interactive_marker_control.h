@@ -50,6 +50,8 @@
 #include "rviz/viewport_mouse_event.h"
 #include "rviz/interactive_object.h"
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace Ogre
 {
   class SceneNode;

@@ -37,6 +37,7 @@
 #include "rviz/properties/enum_property.h"
 #include "rviz/properties/tf_frame_property.h"
 #include "rviz/display.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {
@@ -48,7 +49,7 @@ class Grid;
  *
  * For more information see Grid
  */
-class GridDisplay : public Display
+class RVIZ_DEFAULT_PLUGIN_DECL GridDisplay : public Display
 {
 Q_OBJECT
 public:
@@ -59,7 +60,7 @@ public:
     YZ,
   };
 
-  GridDisplay();
+   GridDisplay();
   virtual ~GridDisplay();
 
   // Overrides from Display
@@ -67,14 +68,14 @@ public:
   virtual void update(float dt, float ros_dt);
 
 private Q_SLOTS:
-  void updateCellCount();
-  void updateCellSize();
-  void updateColor();
-  void updateHeight();
-  void updateLineWidth();
-  void updateOffset();
-  void updatePlane();
-  void updateStyle();
+   void updateCellCount();
+   void updateCellSize();
+   void updateColor();
+   void updateHeight();
+   void updateLineWidth();
+   void updateOffset();
+   void updatePlane();
+   void updateStyle();
 
 private:
   Grid* grid_;            ///< Handles actually drawing the grid

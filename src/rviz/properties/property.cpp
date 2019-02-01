@@ -30,6 +30,8 @@
 #include <stdio.h> // for printf()
 #include <limits.h> // for INT_MIN and INT_MAX
 
+#include <iostream>
+
 #include <QLineEdit>
 #include <QSpinBox>
 

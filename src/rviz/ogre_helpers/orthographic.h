@@ -30,6 +30,8 @@
 #ifndef OGRE_TOOLS_ORTHOGRAPHIC_H
 #define OGRE_TOOLS_ORTHOGRAPHIC_H
 
+#include "rviz/exportdecl.h"
+
 namespace Ogre
 {
 class Matrix4;
@@ -38,7 +40,7 @@ class Matrix4;
 namespace rviz
 {
 
-void buildScaledOrthoMatrix(Ogre::Matrix4& proj, float left, float right, float bottom, float top, float near, float far);
+void RVIZ_DECL buildScaledOrthoMatrix(Ogre::Matrix4& proj, float left, float right, float bottom, float top, float near, float far);
 
 }
 

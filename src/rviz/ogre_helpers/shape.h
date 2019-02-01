@@ -35,6 +35,7 @@
 #include <OgreMaterial.h>
 #include <OgreVector3.h>
 #include <OgreSharedPtr.h>
+#include "rviz/exportdecl.h"
 
 namespace Ogre
 {
@@ -49,7 +50,7 @@ namespace rviz
 
 /**
  */
-class Shape : public Object
+class RVIZ_DECL Shape : public Object
 {
 public:
   enum Type

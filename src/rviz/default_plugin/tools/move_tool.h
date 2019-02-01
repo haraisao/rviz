@@ -31,6 +31,7 @@
 #define RVIZ_MOVE_TOOL_H
 
 #include "rviz/tool.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {

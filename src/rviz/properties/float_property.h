@@ -30,12 +30,13 @@
 #define FLOAT_PROPERTY_H
 
 #include "rviz/properties/property.h"
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
 
 /** @brief Property specialized to enforce floating point max/min. */
-class FloatProperty: public Property
+class RVIZ_DECL FloatProperty: public Property
 {
 Q_OBJECT
 public:

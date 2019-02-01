@@ -2,6 +2,7 @@
 #define EFFORT_VISUAL_H
 
 #include <sensor_msgs/JointState.h>
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace Ogre
 {

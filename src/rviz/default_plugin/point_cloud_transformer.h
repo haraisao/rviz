@@ -41,6 +41,8 @@
 #include <rviz/ogre_helpers/point_cloud.h>
 #endif
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace Ogre
 {
 class Matrix4;

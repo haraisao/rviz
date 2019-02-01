@@ -35,6 +35,7 @@
 #include <OgreSceneNode.h>
 #include <OgreMaterial.h>
 #include <OgreSharedPtr.h>
+#include "rviz/exportdecl.h"
 
 namespace Ogre
 {
@@ -50,7 +51,7 @@ namespace rviz
 {
 
 /* Represents a straight wireframe line between two points. */
-class Line: public Object
+class RVIZ_DECL Line: public Object
 {
 public:
   /**

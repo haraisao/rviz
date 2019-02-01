@@ -44,6 +44,8 @@
 
 #include <ros/time.h>
 
+#include "rviz/exportdecl.h"
+
 class QSplashScreen;
 class QAction;
 class QActionGroup;
@@ -71,7 +73,7 @@ class WidgetGeometryChangeDetector;
  * the top is a toolbar with "Move Camera", "Select", etc.  There is
  * also a menu bar with file/open, etc.
  */
-class VisualizationFrame : public QMainWindow, public WindowManagerInterface
+class RVIZ_DECL VisualizationFrame : public QMainWindow, public WindowManagerInterface
 {
 Q_OBJECT
 public:

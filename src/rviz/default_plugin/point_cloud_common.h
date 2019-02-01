@@ -59,6 +59,8 @@
 # include "rviz/selection/forwards.h"
 #endif
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace rviz
 {
 class BoolProperty;

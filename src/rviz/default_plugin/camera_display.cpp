@@ -232,7 +232,7 @@ void CameraDisplay::onInitialize()
       vis_bit_, context_->getRootDisplayGroup(), this, "Visibility", true,
       "Changes the visibility of other Displays in the camera view.");
 
-  visibility_property_->setIcon( loadPixmap("package://rviz/icons/visibility.svg",true) );
+  visibility_property_->setIcon( loadPixmap("package://rviz/icons/visibility.png",true) );
 
   this->addChild( visibility_property_, 0 );
 }

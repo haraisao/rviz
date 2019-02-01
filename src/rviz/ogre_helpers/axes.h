@@ -37,6 +37,8 @@
 
 #include <vector>
 
+#include "rviz/exportdecl.h"
+
 namespace Ogre
 {
 class SceneManager;
@@ -55,7 +57,7 @@ class Shape;
  * \class Axes
  * \brief An object that displays a set of X/Y/Z axes, with X=Red, Y=Green, Z=Blue
  */
-class Axes : public Object
+class RVIZ_DECL Axes : public Object
 {
 public:
   /**

@@ -30,12 +30,13 @@
 #define BIT_ALLOCATOR_H
 
 #include <stdint.h>
+#include "exportdecl.h"
 
 namespace rviz
 {
 
 /** @brief Allocation manager for bit positions within a 32-bit word. */
-class BitAllocator
+class RVIZ_DECL BitAllocator
 {
 public:
   /** @brief Constructor.  All bits are free initially. */

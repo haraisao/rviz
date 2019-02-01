@@ -46,6 +46,7 @@
 # include "rviz/properties/int_property.h"
 #endif
 
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace Ogre
 {

@@ -36,6 +36,8 @@
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace Ogre
 {
 class ManualObject;

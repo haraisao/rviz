@@ -34,7 +34,7 @@
 
 #include <QMoveEvent>
 
-#ifndef Q_OS_MAC
+#if !defined(Q_OS_MAC) && !defined(WIN32) 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <GL/glx.h>
@@ -141,7 +141,7 @@ void RenderSystem::prepareOverlays(Ogre::SceneManager* scene_manager)
 
 void RenderSystem::setupDummyWindowId()
 {
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC) || defined(WIN32)
   dummy_window_id_ = 0;
 #else
   Display *display = XOpenDisplay(0);
@@ -167,12 +167,19 @@ void RenderSystem::setupDummyWindowId()
 void RenderSystem::loadOgrePlugins()
 {
   std::string plugin_prefix = get_ogre_plugin_path() + "/";
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC)
   plugin_prefix += "lib";
 #endif
+#ifdef WIN32
+  ogre_root_->loadPlugin("RenderSystem_GL" );
+  ogre_root_->loadPlugin("Plugin_OctreeSceneManager");
+  ogre_root_->loadPlugin("Plugin_ParticleFX");
+#else
   ogre_root_->loadPlugin( plugin_prefix + "RenderSystem_GL" );
-  ogre_root_->loadPlugin( plugin_prefix + "Plugin_OctreeSceneManager" );
-  ogre_root_->loadPlugin( plugin_prefix + "Plugin_ParticleFX" );
+  ogre_root_->loadPlugin(plugin_prefix + "Plugin_OctreeSceneManager");
+  ogre_root_->loadPlugin(plugin_prefix + "Plugin_ParticleFX");
+#endif
+
 }
 
 void RenderSystem::detectGlVersion()
@@ -271,6 +278,8 @@ void RenderSystem::setupRenderSystem()
 void RenderSystem::setupResources()
 {
   std::string rviz_path = ros::package::getPath(ROS_PACKAGE_NAME);
+  //rviz_path = "c:/local/ros/melodic/share/rviz";
+  std::cerr << "RVIZ Path: " << rviz_path << std::endl;
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media", "FileSystem", ROS_PACKAGE_NAME );
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/textures", "FileSystem", ROS_PACKAGE_NAME );
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/fonts", "FileSystem", ROS_PACKAGE_NAME );
@@ -279,17 +288,18 @@ void RenderSystem::setupResources()
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/materials/scripts", "FileSystem", ROS_PACKAGE_NAME );
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/materials/glsl120", "FileSystem", ROS_PACKAGE_NAME );
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/materials/glsl120/nogp", "FileSystem", ROS_PACKAGE_NAME );
+  Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/materials/glsl120/include", "FileSystem", ROS_PACKAGE_NAME);
   // Add resources that depend on a specific glsl version.
   // Unfortunately, Ogre doesn't have a notion of glsl versions so we can't go
-  // the 'official' way of defining multiple schemes per material and let Ogre decide which one to use.
+  // the 'official' way of defining multiple schemes per material and let Ogre decide which one to use.i
   if ( getGlslVersion() >= 150  )
   {
-    Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/materials/glsl150", "FileSystem", ROS_PACKAGE_NAME );
-    Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/materials/scripts150", "FileSystem", ROS_PACKAGE_NAME );
+    Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media\\materials/glsl150", "FileSystem", ROS_PACKAGE_NAME );
+    Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media\\materials/scripts150", "FileSystem", ROS_PACKAGE_NAME );
   }
   else if ( getGlslVersion() >= 120  )
   {
-    Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/materials/scripts120", "FileSystem", ROS_PACKAGE_NAME );
+    Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media\\materials/scripts120", "FileSystem", ROS_PACKAGE_NAME );
   }
   else
   {
@@ -377,7 +387,7 @@ Ogre::RenderWindow* RenderSystem::makeRenderWindow(
   }
 
 // Set the macAPI for Ogre based on the Qt implementation
-#if defined(Q_OS_MAC)
+#if defined(Q_OS_MAC) || defined(WIN32)
 	params["macAPI"] = "cocoa";
 	params["macAPICocoaUseNSView"] = "true";
 #endif

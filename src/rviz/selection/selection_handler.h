@@ -45,6 +45,8 @@
 #include "rviz/viewport_mouse_event.h"
 #include "rviz/interactive_object.h"
 
+#include "rviz/exportdecl.h"
+
 namespace Ogre
 {
 class WireBoundingBox;
@@ -61,7 +63,7 @@ class ViewportMouseEvent;
 
 typedef std::vector<Ogre::AxisAlignedBox> V_AABB;
 
-class SelectionHandler
+class RVIZ_DECL SelectionHandler
 {
 public:
   SelectionHandler( DisplayContext* context );

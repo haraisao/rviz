@@ -35,6 +35,8 @@
 #include <string>
 #include <boost/function.hpp>
 
+#include "rviz/exportdecl.h"
+
 namespace tf
 {
 class Transformer;
@@ -45,7 +47,7 @@ namespace rviz
 
 class FrameManager;
 
-class TFLinkUpdater : public LinkUpdater
+class RVIZ_DECL TFLinkUpdater : public LinkUpdater
 {
 public:
   typedef boost::function<void(StatusLevel, const std::string&, const std::string&)> StatusCallback;

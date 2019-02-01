@@ -19,12 +19,18 @@ find_package(Boost REQUIRED
 
 find_package(urdfdom_headers REQUIRED)
 
-find_package(PkgConfig REQUIRED)
-
-find_package(ASSIMP QUIET)
-if (NOT ASSIMP_FOUND)
-  pkg_check_modules(ASSIMP assimp)
+if(NOT WIN32)
+  find_package(PkgConfig REQUIRED)
 endif()
+
+#find_package(ASSIMP QUIET)
+find_package(ASSIMP REQUIRED)
+if(NOT WIN32)
+  if (NOT ASSIMP_FOUND)
+    pkg_check_modules(ASSIMP assimp)
+  endif()
+endif()
+
 if (ASSIMP_FOUND)
   if( NOT ${ASSIMP_VERSION} VERSION_LESS "2.0.1150" )
     add_definitions(-DASSIMP_UNIFIED_HEADER_NAMES)
@@ -44,21 +50,37 @@ else()
   set(ASSIMP_INCLUDE_DIRS)
 endif()
 
-pkg_check_modules(OGRE_OV OGRE OGRE-Overlay)
+if(WIN32)
+  find_package(OGRE)
+  find_package(OGRE-Overlay)
+else()
+  pkg_check_modules(OGRE_OV OGRE OGRE-Overlay)
+endif()
 
 # Old versions of OGRE (pre 1.9) included OGRE-Overlay in the main package
 # (i.e. there was no OGRE-Overlay component).  So if the above
 # pkg_check_modules() failed, try looking for just OGRE.
 if(NOT OGRE_OV_FOUND)
-  pkg_check_modules(OGRE_OV REQUIRED OGRE)
+  if(WIN32)
+    find_package(OGRE REQUIRED)
+    set(OGRE_OV_INCLUDE_DIRS ${OGRE_INCLUDE_DIRS} )
+    set(OGRE_OV_LIBRARIES_ABS ${OGRE_LIBRARY_DIRS}/OgreMain.lib)
+    set(OGRE_PLUGIN_PATH ${OGRE_DIR}/../bin)
+    list(APPEND OGRE_OV_LIBRARIES_ABS "${OGRE_LIBRARY_DIRS}/OgreOverlay.lib")
+    set(ROS_DISTRO "melodic")
+  else()
+    pkg_check_modules(OGRE_OV REQUIRED OGRE)
+  endif()
 endif(NOT OGRE_OV_FOUND)
 
 ## Find OGRE Plugin path (not necessarily platform-independent, I guess)
+if(NOT WIN32)
 execute_process(COMMAND
   ${PKG_CONFIG_EXECUTABLE} --variable=plugindir OGRE
   OUTPUT_VARIABLE OGRE_PLUGIN_PATH
   OUTPUT_STRIP_TRAILING_WHITESPACE
   )
+endif()
 message(STATUS OGRE_PLUGIN_PATH=${OGRE_PLUGIN_PATH})
 
 # find absolute path of ogre libraries.
@@ -160,6 +182,11 @@ else()
 endif()
 
 find_package(TinyXML2 REQUIRED)
+
+if(WIN32)
+  find_package(yaml-cpp REQUIRED)
+  add_definitions("-DRVIZ_HAVE_YAMLCPP_05")
+endif()
 
 catkin_python_setup()
 

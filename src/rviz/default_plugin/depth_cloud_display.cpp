@@ -78,7 +78,6 @@ DepthCloudDisplay::DepthCloudDisplay()
   , trans_thres_(0.01f)
 
 {
-
   // Depth map properties
   QRegExp depth_filter("depth");
   depth_filter.setCaseSensitivity(Qt::CaseInsensitive);
@@ -158,7 +157,6 @@ DepthCloudDisplay::DepthCloudDisplay()
                                                           use_occlusion_compensation_property_,
                                                           SLOT( updateOcclusionTimeOut() ),
                                                           this );
-
 }
 
 void DepthCloudDisplay::onInitialize()
@@ -195,6 +193,7 @@ DepthCloudDisplay::~DepthCloudDisplay()
   {
     delete ml_depth_data_;
   }
+
 }
 
 void DepthCloudDisplay::setTopic( const QString &topic, const QString &datatype )
@@ -286,6 +285,7 @@ void DepthCloudDisplay::onDisable()
 
 void DepthCloudDisplay::subscribe()
 {
+
   if ( !isEnabled() )
   {
     return;
@@ -293,6 +293,7 @@ void DepthCloudDisplay::subscribe()
 
   try
   {
+
     // reset all message filters
     sync_depth_color_.reset(new SynchronizerDepthColor(SyncPolicyDepthColor(queue_size_)));
     depthmap_tf_filter_.reset();
@@ -305,11 +306,11 @@ void DepthCloudDisplay::subscribe()
 
     std::string depthmap_transport = depth_transport_property_->getStdString();
     std::string color_transport = color_transport_property_->getStdString();
-
+ 
     if (!depthmap_topic.empty() && !depthmap_transport.empty()) {
       // subscribe to depth map topic
       depthmap_sub_->subscribe(*depthmap_it_, depthmap_topic, queue_size_,  image_transport::TransportHints(depthmap_transport));
-
+#if 1
       depthmap_tf_filter_.reset(new tf2_ros::MessageFilter<sensor_msgs::Image>(
         *depthmap_sub_,
         *context_->getTF2BufferPtr(),
@@ -317,29 +318,34 @@ void DepthCloudDisplay::subscribe()
         queue_size_,
         threaded_nh_
       ));
-
+#endif
       // subscribe to CameraInfo  topic
       std::string info_topic = image_transport::getCameraInfoTopic(depthmap_topic);
       cam_info_sub_->subscribe(threaded_nh_, info_topic, queue_size_);
       cam_info_sub_->registerCallback(boost::bind(&DepthCloudDisplay::caminfoCallback, this, _1));
 
       if (!color_topic.empty() && !color_transport.empty()) {
+
         // subscribe to color image topic
         rgb_sub_->subscribe(*rgb_it_, color_topic, queue_size_,  image_transport::TransportHints(color_transport));
 
         // connect message filters to synchronizer
+#if 1
         sync_depth_color_->connectInput(*depthmap_tf_filter_, *rgb_sub_);
+#endif
         sync_depth_color_->setInterMessageLowerBound(0, ros::Duration(0.5));
         sync_depth_color_->setInterMessageLowerBound(1, ros::Duration(0.5));
         sync_depth_color_->registerCallback(boost::bind(&DepthCloudDisplay::processMessage, this, _1, _2));
 
         pointcloud_common_->color_transformer_property_->setValue("RGB8");
+
       } else
       {
         depthmap_tf_filter_->registerCallback(boost::bind(&DepthCloudDisplay::processMessage, this, _1));
       }
 
     }
+
   }
   catch (ros::Exception& e)
   {
@@ -349,6 +355,7 @@ void DepthCloudDisplay::subscribe()
   {
     setStatus( StatusProperty::Error, "Message", QString("Error subscribing: ") + e.what() );
   }
+
 }
 
 void DepthCloudDisplay::caminfoCallback( sensor_msgs::CameraInfo::ConstPtr msg )
@@ -379,7 +386,6 @@ void DepthCloudDisplay::unsubscribe()
 
 void DepthCloudDisplay::clear()
 {
-
   boost::mutex::scoped_lock lock(mutex_);
 
   pointcloud_common_->reset();
@@ -388,12 +394,10 @@ void DepthCloudDisplay::clear()
 
 void DepthCloudDisplay::update(float wall_dt, float ros_dt)
 {
-
   boost::mutex::scoped_lock lock(mutex_);
 
   pointcloud_common_->update(wall_dt, ros_dt);
 }
-
 
 void DepthCloudDisplay::reset()
 {
@@ -415,7 +419,6 @@ void DepthCloudDisplay::processMessage(sensor_msgs::ImageConstPtr depth_msg,
   {
     return;
   }
-
   std::ostringstream s;
 
   ++messages_received_;
@@ -445,10 +448,14 @@ void DepthCloudDisplay::processMessage(sensor_msgs::ImageConstPtr depth_msg,
 
     if (depth_msg->header.frame_id != rgb_msg->header.frame_id)
     {
+#if 0
+      setStatusStd( StatusProperty::Warn, "Message", "Depth image from id doesn't match color image frame id" );
+#else
       std::stringstream errorMsg;
       errorMsg << "Depth image frame id [" << depth_msg->header.frame_id.c_str()
            << "] doesn't match color image frame id [" << rgb_msg->header.frame_id.c_str() << "]";
       setStatusStd( StatusProperty::Warn, "Message", errorMsg.str() );
+#endif
     }
   }
 
@@ -522,8 +529,6 @@ void DepthCloudDisplay::processMessage(sensor_msgs::ImageConstPtr depth_msg,
     setStatus(StatusProperty::Error, "Message", QString("Error updating depth cloud: ") + e.what());
   }
 
-
-
 }
 
 
@@ -557,6 +562,7 @@ void DepthCloudDisplay::scanForTransportSubscriberPlugins()
     {
     }
   }
+
 }
 
 void DepthCloudDisplay::updateTopic()
@@ -621,4 +627,3 @@ void DepthCloudDisplay::fixedFrameChanged()
 #include <pluginlib/class_list_macros.hpp>
 
 PLUGINLIB_EXPORT_CLASS( rviz::DepthCloudDisplay, rviz::Display)
-

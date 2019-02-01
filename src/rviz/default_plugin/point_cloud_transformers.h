@@ -34,6 +34,8 @@
 
 #include "point_cloud_transformer.h"
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace rviz
 {
 

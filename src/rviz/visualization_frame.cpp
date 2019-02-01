@@ -337,7 +337,6 @@ void VisualizationFrame::initialize(const QString& display_config_file )
   if (app_) app_->processEvents();
 
   render_panel_->initialize( manager_->getSceneManager(), manager_ );
-
   // Periodically process events for the splash screen.
   if (app_) app_->processEvents();
 
@@ -362,7 +361,6 @@ void VisualizationFrame::initialize(const QString& display_config_file )
   {
     loadDisplayConfig( QString::fromStdString( default_display_config_file_ ));
   }
-
   // Periodically process events for the splash screen.
   if (app_) app_->processEvents();
 
@@ -372,7 +370,6 @@ void VisualizationFrame::initialize(const QString& display_config_file )
   manager_->startUpdate();
   initialized_ = true;
   Q_EMIT statusUpdate( "RViz is ready." );
-
   connect( manager_, SIGNAL( preUpdate() ), this, SLOT( updateFps() ) );
   connect( manager_, SIGNAL( statusUpdate( const QString& )), this, SIGNAL( statusUpdate( const QString& )));
 }
@@ -713,7 +710,6 @@ void VisualizationFrame::loadDisplayConfig( const QString& qpath )
   {
     return;
   }
-
   setWindowModified( false );
   loading_ = true;
 
@@ -732,7 +728,6 @@ void VisualizationFrame::loadDisplayConfig( const QString& qpath )
   {
     load( config );
   }
-
   markRecentConfig( path );
 
   setDisplayConfigFile( path );

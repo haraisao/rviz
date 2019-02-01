@@ -87,10 +87,10 @@ ViewController::ViewController()
 void ViewController::initialize( DisplayContext* context )
 {
   context_ = context;
-
   std::stringstream ss;
   static int count = 0;
   ss << "ViewControllerCamera" << count++;
+
   camera_ = context_->getSceneManager()->createCamera( ss.str() );
   context_->getSceneManager()->getRootSceneNode()->attachObject( camera_ );
 
@@ -103,12 +103,12 @@ void ViewController::initialize( DisplayContext* context )
   cursor_ = getDefaultCursor();
 
   standard_cursors_[Default] = getDefaultCursor();
-  standard_cursors_[Rotate2D] = makeIconCursor( "package://rviz/icons/rotate.svg" );
-  standard_cursors_[Rotate3D] = makeIconCursor( "package://rviz/icons/rotate_cam.svg" );
-  standard_cursors_[MoveXY] = makeIconCursor( "package://rviz/icons/move2d.svg" );
-  standard_cursors_[MoveZ] = makeIconCursor( "package://rviz/icons/move_z.svg" );
-  standard_cursors_[Zoom] = makeIconCursor( "package://rviz/icons/zoom.svg" );
-  standard_cursors_[Crosshair] = makeIconCursor( "package://rviz/icons/crosshair.svg" );
+  standard_cursors_[Rotate2D] = makeIconCursor( "package://rviz/icons/rotate.png" );
+  standard_cursors_[Rotate3D] = makeIconCursor( "package://rviz/icons/rotate_cam.png" );
+  standard_cursors_[MoveXY] = makeIconCursor( "package://rviz/icons/move2d.png" );
+  standard_cursors_[MoveZ] = makeIconCursor( "package://rviz/icons/move_z.png" );
+  standard_cursors_[Zoom] = makeIconCursor( "package://rviz/icons/zoom.png" );
+  standard_cursors_[Crosshair] = makeIconCursor( "package://rviz/icons/crosshair.png" );
 
   updateNearClipDistance();
   updateStereoProperties();

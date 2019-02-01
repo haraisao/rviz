@@ -42,6 +42,7 @@
 
 #include "rviz/message_filter_display.h"
 #include <nav_msgs/Odometry.h>
+#include "rviz/default_plugin/exportdecl.h"
 
 namespace rviz
 {

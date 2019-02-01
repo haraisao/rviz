@@ -38,6 +38,8 @@
 
 #include "move_tool.h"
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace rviz
 {
 

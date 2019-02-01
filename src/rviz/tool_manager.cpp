@@ -88,7 +88,6 @@ void ToolManager::removeAll()
 void ToolManager::load( const Config& config )
 {
   removeAll();
-
   int num_tools = config.listLength();
   for( int i = 0; i < num_tools; i++ )
   {
@@ -274,30 +273,30 @@ Tool* ToolManager::addTool( const QString& class_id )
   return tool;
 }
 
-void ToolManager::removeTool( int index )
+void ToolManager::removeTool(int index)
 {
-  Tool* tool = tools_.takeAt( index );
-  Tool* fallback = NULL;
-  if( tools_.size() > 0 )
-  {
-    fallback = tools_[ 0 ];
-  }
-  if( tool == current_tool_ )
-  {
-    setCurrentTool( fallback );
-  }
-  if( tool == default_tool_ )
-  {
-    setDefaultTool( fallback );
-  }
-  Q_EMIT toolRemoved( tool );
+	Tool* tool = tools_.takeAt(index);
+	Tool* fallback = NULL;
+	if (tools_.size() > 0)
+	{
+		fallback = tools_[0];
+	}
+	if (tool == current_tool_)
+	{
+		setCurrentTool(fallback);
+	}
+	if (tool == default_tool_)
+	{
+		setDefaultTool(fallback);
+	}
+	Q_EMIT toolRemoved(tool);
 
-  uint key;
-  if( toKey(  QString( tool->getShortcutKey() ), key ) )
-  {
-    shortkey_to_tool_map_.erase( key );
-  }
-  delete tool;
+	uint key;
+	if (toKey(QString(tool->getShortcutKey()), key))
+	{
+		shortkey_to_tool_map_.erase(key);
+	}
+	delete tool;
   Q_EMIT configChanged();
 }
 

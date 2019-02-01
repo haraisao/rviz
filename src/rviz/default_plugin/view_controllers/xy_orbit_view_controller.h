@@ -31,6 +31,7 @@
 #define RVIZ_SIMPLE_ORBIT_VIEW_CONTROLLER_H
 
 #include "rviz/default_plugin/view_controllers/orbit_view_controller.h"
+#include "rviz/default_plugin/exportdecl.h"
 
 #include <OgreVector3.h>
 

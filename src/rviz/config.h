@@ -41,6 +41,8 @@
 #include <QString>
 #include <QVariant>
 
+#include "rviz/exportdecl.h"
+
 namespace rviz
 {
 
@@ -122,7 +124,7 @@ namespace rviz
  * to change the type of the node, any data stored in the node is
  * destroyed (except for child nodes which are referenced by other
  * existing Config objects). */
-class Config
+class RVIZ_DECL Config
 {
 private:
   class Node;
@@ -279,7 +281,7 @@ public:
    *
    * Maps are stored in alphabetical order of their keys, and
    * MapIterator uses this same order. */
-  class MapIterator
+  class RVIZ_DECL MapIterator
   {
   public:
     /** @brief Advance iterator to next entry. */

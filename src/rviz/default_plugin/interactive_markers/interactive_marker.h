@@ -53,6 +53,8 @@
 #include "rviz/default_plugin/interactive_markers/interactive_marker_control.h"
 #include "rviz/properties/status_property.h"
 
+#include "rviz/default_plugin/exportdecl.h"
+
 namespace Ogre {
 class SceneNode;
 }

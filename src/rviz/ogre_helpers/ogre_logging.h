@@ -30,6 +30,7 @@
 #define OGRE_LOGGING_H
 
 #include <QString>
+#include "rviz/exportdecl.h"
 
 namespace rviz
 {
@@ -43,7 +44,7 @@ namespace rviz
  * called before any Ogre::Root object is instantiated.
  * configureLogging() is called at the right time by the RenderSystem
  * constructor, so you generally won't need to call it explicitly. */
-class OgreLogging
+class RVIZ_DECL OgreLogging
 {
 public:
   /** @brief Configure Ogre to write output to the ROS logger. */

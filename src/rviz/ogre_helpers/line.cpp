@@ -73,7 +73,15 @@ Line::~Line()
   }
   scene_manager_->destroySceneNode(scene_node_);
   scene_manager_->destroyManualObject( manual_object_ );
+
+#ifdef WIN32
+  Ogre::ResourcePtr mat_ptr = Ogre::MaterialManager::getSingleton().getByName(manual_object_material_->getName());
+  if (!mat_ptr.isNull()) {
+    Ogre::MaterialManager::getSingleton().remove(mat_ptr);
+  }
+#else
   Ogre::MaterialManager::getSingleton().remove(manual_object_material_->getName());
+#endif
 }
 
 void Line::setPoints( Ogre::Vector3 start, Ogre::Vector3 end )
