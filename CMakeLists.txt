@@ -8,6 +8,9 @@ if (POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
 endif()
 
+if(WIN32)
+  set(Boost_USE_STATIC_LIBS 1 CACHE BOOL "" FORCE)
+endif()
 find_package(Boost REQUIRED
   COMPONENTS
   filesystem
@@ -162,6 +165,7 @@ find_package(catkin REQUIRED
   visualization_msgs
   urdfdom_headers
 )
+
 
 if(${tf_VERSION} VERSION_LESS "1.11.3")
   add_definitions("-DRVIZ_USE_BOOST_SIGNAL_1")
