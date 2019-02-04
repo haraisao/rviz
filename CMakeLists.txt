@@ -8,9 +8,6 @@ if (POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
 endif()
 
-if(WIN32)
-  set(Boost_USE_STATIC_LIBS 1 CACHE BOOL "" FORCE)
-endif()
 find_package(Boost REQUIRED
   COMPONENTS
   filesystem
