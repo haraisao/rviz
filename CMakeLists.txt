@@ -273,3 +273,37 @@ install(FILES plugin_description.xml
 install(FILES help/help.html
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/help
 )
+
+if(WIN32)
+  # for assimp runtime
+  set(ASSIMP_RUNTIME "${ASSIMP_ROOT_DIR}/bin/assimp${ASSIMP_LIBRARY_SUFFIX}.dll")
+  if(EXISTS ${ASSIMP_RUNTIME})
+    install(FILES ${ASSIMP_RUNTIME}
+      DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
+  endif()
+
+  # for ogre runtime
+  get_filename_component(OGRE_BIN_PATH ${OGRE_DIR}/../bin ABSOLUTE)
+  set(OGRE_RUNTIME_LIBS "")
+  if(EXISTS "${OGRE_BIN_PATH}/OgreMain.dll")
+     list(APPEND OGRE_RUNTIME_LIBS "${OGRE_BIN_PATH}/OgreMain.dll")
+  endif()
+  if(EXISTS "${OGRE_BIN_PATH}/OgreOverlay.dll")
+    list(APPEND OGRE_RUNTIME_LIBS "${OGRE_BIN_PATH}/OgreOverlay.dll")
+  endif()
+  if(EXISTS "${OGRE_BIN_PATH}/Plugin_OctreeSceneManager.dll")
+    list(APPEND OGRE_RUNTIME_LIBS "${OGRE_BIN_PATH}/Plugin_OctreeSceneManager.dll")
+  endif()
+  if(EXISTS "${OGRE_BIN_PATH}/Plugin_ParticlFX.dll")
+    list(APPEND OGRE_RUNTIME_LIBS "${OGRE_BIN_PATH}/Plugin_ParticlFX.dll")
+  endif()
+  if(EXISTS "${OGRE_BIN_PATH}/RenderSystem_GL.dll")
+    list(APPEND OGRE_RUNTIME_LIBS "${OGRE_BIN_PATH}/RenderSystem_GL.dll")
+  endif()
+  if(EXISTS "${OGRE_BIN_PATH}/zlib.dll")
+    list(APPEND OGRE_RUNTIME_LIBS "${OGRE_BIN_PATH}/zlib.dll")
+  endif()
+  install(FILES ${OGRE_RUNTIME_LIBS}
+      DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
+
+endif()
