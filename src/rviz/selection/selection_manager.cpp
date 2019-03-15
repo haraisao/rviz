@@ -849,7 +849,7 @@ void SelectionManager::pick(Ogre::Viewport* viewport, int x1, int y1, int x2, in
     {
       handler_it->second->postRenderPass(0);
     }
-
+    
     handles_by_pixel.reserve(pixels.size());
     V_CollObject::iterator it = pixels.begin();
     V_CollObject::iterator end = pixels.end();

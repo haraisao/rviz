@@ -72,7 +72,7 @@ SelectionTool::SelectionTool()
 
 SelectionTool::~SelectionTool()
 {
-  std::cerr << "call ~selectionTool()" <<std::endl;
+  //std::cerr << "call ~selectionTool()" <<std::endl;
   delete move_tool_;
 }
 

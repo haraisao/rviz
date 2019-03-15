@@ -37,6 +37,7 @@
 #include <OgreMaterialManager.h>
 #include <OgreTechnique.h>
 
+#include <iostream>
 namespace rviz
 {
 
@@ -56,7 +57,7 @@ Line::Line( Ogre::SceneManager* manager, Ogre::SceneNode* parent_node )
 
   // NOTE: The second parameter to the create method is the resource group the material will be added to.
   // If the group you name does not exist (in your resources.cfg file) the library will assert() and your program will crash
-  manual_object_material_ = Ogre::MaterialManager::getSingleton().create(ss.str(),"rviz");
+  manual_object_material_ = Ogre::MaterialManager::getSingleton().create(ss.str(), ROS_PACKAGE_NAME);
   manual_object_material_->setReceiveShadows(false);
   manual_object_material_->getTechnique(0)->setLightingEnabled(true);
   manual_object_material_->getTechnique(0)->getPass(0)->setDiffuse(0,0,0,0);
@@ -75,7 +76,7 @@ Line::~Line()
   scene_manager_->destroyManualObject( manual_object_ );
 
 #ifdef WIN32
-  Ogre::ResourcePtr mat_ptr = Ogre::MaterialManager::getSingleton().getByName(manual_object_material_->getName());
+  Ogre::ResourcePtr mat_ptr = Ogre::MaterialManager::getSingleton().getByName(manual_object_material_->getName(), ROS_PACKAGE_NAME);
   if (!mat_ptr.isNull()) {
     Ogre::MaterialManager::getSingleton().remove(mat_ptr);
   }
@@ -87,7 +88,11 @@ Line::~Line()
 void Line::setPoints( Ogre::Vector3 start, Ogre::Vector3 end )
 {
   manual_object_->clear();
+#ifdef WIN32
+  manual_object_->begin(manual_object_material_->getName(), Ogre::RenderOperation::OT_LINE_LIST, ROS_PACKAGE_NAME);
+#else
   manual_object_->begin(manual_object_material_->getName(), Ogre::RenderOperation::OT_LINE_LIST);
+#endif
   manual_object_->position(start);
   manual_object_->position(end);
   manual_object_->end();

@@ -52,7 +52,7 @@ PoseTool::PoseTool()
 
 PoseTool::~PoseTool()
 {
-  std::cerr << "   call ~PoseTool()" << std::endl;
+  //std::cerr << "   call ~PoseTool()" << std::endl;
   delete arrow_;
 }
 

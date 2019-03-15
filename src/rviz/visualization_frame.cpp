@@ -1342,7 +1342,7 @@ PanelDockWidget* VisualizationFrame::addPane( const QString& name, QWidget* pane
   connect( dock, SIGNAL( closed()), this, SLOT( setDisplayConfigModified() ));
 
   dock->installEventFilter( geom_change_detector_ );
-
+ 
   // repair/update visibility status
   hideLeftDock( area == Qt::LeftDockWidgetArea ? false : hide_left_dock_button_->isChecked() );
   hideRightDock( area == Qt::RightDockWidgetArea ? false : hide_right_dock_button_->isChecked() );

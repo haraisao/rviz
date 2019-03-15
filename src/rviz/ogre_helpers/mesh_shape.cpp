@@ -75,7 +75,11 @@ void MeshShape::beginTriangles()
   if (!started_)
   {
     started_ = true;
+  #ifdef WIN32
+    manual_object_->begin(material_name_, Ogre::RenderOperation::OT_TRIANGLE_LIST, ROS_PACKAGE_NAME);
+  #else
     manual_object_->begin(material_name_, Ogre::RenderOperation::OT_TRIANGLE_LIST);
+  #endif
   }
 }
 
@@ -142,7 +146,9 @@ void MeshShape::clear()
   if (entity_)
   {
     entity_->detachFromParent();
-    Ogre::MeshManager::getSingleton().remove(entity_->getMesh()->getName());
+    if (Ogre::MaterialManager::getSingletonPtr()->resourceExists(entity_->getMesh()->getName())){
+      Ogre::MeshManager::getSingleton().remove(entity_->getMesh()->getName());
+    }
     scene_manager_->destroyEntity( entity_ );
     entity_ = NULL;
   }

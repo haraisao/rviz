@@ -95,13 +95,16 @@ MovableText::~MovableText()
   if (mRenderOp.vertexData)
     delete mRenderOp.vertexData;
   // May cause crashing... check this and comment if it does
-  if (!mpMaterial.isNull())
-    MaterialManager::getSingletonPtr()->remove(mpMaterial->getName());
+  if (!mpMaterial.isNull()){
+    if (Ogre::MaterialManager::getSingletonPtr()->resourceExists(mpMaterial->getName())){
+      MaterialManager::getSingletonPtr()->remove(mpMaterial->getName());
+    }
+  }
 }
 
 void MovableText::setFontName(const String &fontName)
 {
-  if ((Ogre::MaterialManager::getSingletonPtr()->resourceExists(mName + "Material")))
+  if (Ogre::MaterialManager::getSingletonPtr()->resourceExists(mName + "Material"))
   {
     Ogre::MaterialManager::getSingleton().remove(mName + "Material");
   }
@@ -109,12 +112,20 @@ void MovableText::setFontName(const String &fontName)
   if (mFontName != fontName || mpMaterial.isNull() || !mpFont)
   {
     mFontName = fontName;
+#ifdef WIN32
     mpFont
+        = (Font *) FontManager::getSingleton().getByName(mFontName, ROS_PACKAGE_NAME).getPointer();
+#else
+   mpFont
         = (Font *) FontManager::getSingleton().getByName(mFontName).getPointer();
-    if (!mpFont)
-      throw Exception(Exception::ERR_ITEM_NOT_FOUND, "Could not find font "
-          + fontName, "MovableText::setFontName");
+#endif
+	if (!mpFont)
+  {
+		throw Exception(Exception::ERR_ITEM_NOT_FOUND, "Could not find font "
+			+ fontName, "MovableText::setFontName");
+  }
 
+    mpFont->prepare();
     mpFont->load();
     if (!mpMaterial.isNull())
     {

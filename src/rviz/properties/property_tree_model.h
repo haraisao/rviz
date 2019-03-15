@@ -31,12 +31,14 @@
 
 #include <QAbstractItemModel>
 
+#include "rviz/exportdecl.h"
+
 namespace rviz
 {
 
 class Property;
 
-class PropertyTreeModel: public QAbstractItemModel
+class RVIZ_DECL PropertyTreeModel: public QAbstractItemModel
 {
 Q_OBJECT
 public:

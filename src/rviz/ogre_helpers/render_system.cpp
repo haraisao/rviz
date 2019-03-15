@@ -175,7 +175,7 @@ void RenderSystem::loadOgrePlugins()
   ogre_root_->loadPlugin("Plugin_OctreeSceneManager");
   ogre_root_->loadPlugin("Plugin_ParticleFX");
 #else
-  ogre_root_->loadPlugin( plugin_prefix + "RenderSystem_GL" );
+  ogre_root_->loadPlugin(plugin_prefix + "RenderSystem_GL" );
   ogre_root_->loadPlugin(plugin_prefix + "Plugin_OctreeSceneManager");
   ogre_root_->loadPlugin(plugin_prefix + "Plugin_ParticleFX");
 #endif
@@ -279,7 +279,7 @@ void RenderSystem::setupResources()
 {
   std::string rviz_path = ros::package::getPath(ROS_PACKAGE_NAME);
   //rviz_path = "c:/local/ros/melodic/share/rviz";
-  std::cerr << "RVIZ Path: " << rviz_path << std::endl;
+  //std::cerr << "RVIZ Path: " << rviz_path << std::endl;
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media", "FileSystem", ROS_PACKAGE_NAME );
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/textures", "FileSystem", ROS_PACKAGE_NAME );
   Ogre::ResourceGroupManager::getSingleton().addResourceLocation( rviz_path + "/ogre_media/fonts", "FileSystem", ROS_PACKAGE_NAME );

@@ -57,7 +57,7 @@ MeasureTool::MeasureTool() :
 
 MeasureTool::~MeasureTool()
 {
-  std::cerr << "Call ~MeasureTool()" << std::endl;
+  //std::cerr << "Call ~MeasureTool()" << std::endl;
   delete line_;
 }
 

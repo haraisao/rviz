@@ -117,8 +117,12 @@ Shape::~Shape()
 	if (entity_)
 		scene_manager_->destroyEntity(entity_);
 	material_->unload();
-
+  
+#ifdef WIN32
+	Ogre::ResourcePtr mat_ptr = Ogre::MaterialManager::getSingleton().getByName(material_->getName(), ROS_PACKAGE_NAME);
+#else
 	Ogre::ResourcePtr mat_ptr = Ogre::MaterialManager::getSingleton().getByName(material_->getName());
+#endif
 	if (!mat_ptr.isNull()) {
     //std::cerr << "call MaterialManager.remove " << material_->getName() << std::endl;
 		Ogre::MaterialManager::getSingleton().remove(mat_ptr);

@@ -60,7 +60,9 @@ TriangleListMarker::~TriangleListMarker()
   {
     context_->getSceneManager()->destroyManualObject(manual_object_);
     material_->unload();
-    Ogre::MaterialManager::getSingleton().remove(material_->getName());
+    if (Ogre::MaterialManager::getSingletonPtr()->resourceExists(material_->getName())){
+      Ogre::MaterialManager::getSingleton().remove(material_->getName());
+    }
   }
 }
 
@@ -139,7 +141,11 @@ void TriangleListMarker::onNewMessage(const MarkerConstPtr& old_message, const M
   {
     manual_object_->clear();
     manual_object_->estimateVertexCount(num_points);
+  #if WIN32
+    manual_object_->begin(material_name_, Ogre::RenderOperation::OT_TRIANGLE_LIST, ROS_PACKAGE_NAME);
+  #else
     manual_object_->begin(material_name_, Ogre::RenderOperation::OT_TRIANGLE_LIST);
+  #endif
   }
 
   bool has_vertex_colors = new_message->colors.size() == num_points;
