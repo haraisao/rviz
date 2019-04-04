@@ -8,6 +8,8 @@ if (POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
 endif()
 
+find_package(catkin REQUIRED)
+
 find_package(Boost REQUIRED
   COMPONENTS
   filesystem
