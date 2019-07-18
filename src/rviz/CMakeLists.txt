@@ -143,7 +143,7 @@ target_link_libraries(${PROJECT_NAME}
   ${rviz_ADDITIONAL_LIBRARIES}
   ${TinyXML2_LIBRARIES}
   ${X11_X11_LIB}
-  assimp
+  ${ASSIMP_LIBRARIES}
   yaml-cpp
 )
 

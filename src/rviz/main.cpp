@@ -28,15 +28,19 @@
  */
 
 #include <QApplication>
+#include <iostream>
+#include <string>
 
 #include "rviz/visualizer_app.h"
 
 int main( int argc, char** argv )
 {
   QApplication qapp( argc, argv );
-
+  std::string s;
   rviz::VisualizerApp vapp;
   vapp.setApp( &qapp );
+  //std::cout << "==== Input Key ";
+  //std::cin >> s;
   if( vapp.init( argc, argv ))
   {
     return qapp.exec();

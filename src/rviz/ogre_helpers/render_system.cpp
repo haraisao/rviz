@@ -74,6 +74,8 @@
 
 #include <QMessageBox>
 
+#include <iostream>
+
 namespace rviz
 {
 
@@ -116,6 +118,7 @@ RenderSystem::RenderSystem()
   OgreLogging::configureLogging();
 
   std::string rviz_path = ros::package::getPath(ROS_PACKAGE_NAME);
+  std::cerr << "== rviz_path: " << rviz_path << "==" << std::endl;
 
   setupDummyWindowId();
   ogre_root_ = new Ogre::Root( rviz_path+"/ogre_media/plugins.cfg" );

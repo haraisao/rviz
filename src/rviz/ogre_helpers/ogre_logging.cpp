@@ -34,6 +34,8 @@
 
 #include "rviz/ogre_helpers/ogre_logging.h"
 
+#include <istream>
+
 namespace rviz
 {
 
@@ -99,12 +101,25 @@ void OgreLogging::noLog()
 void OgreLogging::configureLogging()
 {
   static RosLogListener ll;
+  //Ogre::LogManager* log_manager = NULL;
   Ogre::LogManager* log_manager = Ogre::LogManager::getSingletonPtr();
   if( log_manager == NULL )
   {
     log_manager = new Ogre::LogManager();
   }
-  Ogre::Log* l = log_manager->createLog( filename_.toStdString(), false, false, preference_==NoLogging );
+
+  std::string fname = filename_.toStdString();
+
+#if 0
+  if (fname.length() == 0) {
+    fname = "C:/opt/org_log.log";
+	preference_ = StandardOut;
+  }
+
+  std::cerr << ">>>> " << fname << "<<<" << std::endl;
+#endif
+  //Ogre::Log* l = log_manager->createLog( filename_.toStdString(), false, false, preference_==NoLogging );
+  Ogre::Log* l = log_manager->createLog( fname, false, false, preference_==NoLogging );
   l->addListener( &ll );
 
   // Printing to standard out is what Ogre does if you don't do any LogManager calls.
